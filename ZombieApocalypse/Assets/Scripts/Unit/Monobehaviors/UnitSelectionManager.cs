@@ -32,7 +32,28 @@ public class UnitSelectionManager : MonoBehaviour
 
             EntityManager entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
 
-            EntityQuery entityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<LocalTransform,Unit>().WithPresent<Selected>().Build(entityManager);
+            EntityQuery entityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<Selected,Unit>().Build(entityManager);
+
+
+            NativeArray<Entity> entityArray = entityQuery.ToEntityArray(Allocator.Temp);
+
+            NativeArray<Selected> selectedArray = entityQuery.ToComponentDataArray<Selected>(Allocator.Temp);
+
+            for(int i=0;i<entityArray.Length;i++)
+            {
+                Selected selected = selectedArray[i];
+                
+                selected.onSelected = false;
+                selected.onDeselected = true;
+
+                entityManager.SetComponentEnabled<Selected>(entityArray[i], false);
+                entityManager.SetComponentData(entityArray[i], selected);
+            }
+
+
+       
+
+            entityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<LocalTransform,Unit>().WithPresent<Selected>().Build(entityManager);
 
             entityQuery = entityManager.CreateEntityQuery(typeof(PhysicsWorldSingleton));
 
@@ -73,21 +94,23 @@ public class UnitSelectionManager : MonoBehaviour
         {
             EntityManager entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
 
-            EntityQuery entityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<UnitMover,Selected>().Build(entityManager);
+            EntityQuery entityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<Selected>().WithPresent<MoveOverride>().Build(entityManager);
 
             NativeArray<Entity> entityArray = entityQuery.ToEntityArray(Allocator.Temp);
-            NativeArray<UnitMover> unitMoverArray = entityQuery.ToComponentDataArray<UnitMover>(Allocator.Temp);
+            NativeArray<MoveOverride> moveOverrideArray = entityQuery.ToComponentDataArray<MoveOverride>(Allocator.Temp);
 
             for(int i=0;i<entityArray.Length;i++)
             {
-                UnitMover unitMover = unitMoverArray[i];
+                MoveOverride moveOverride = moveOverrideArray[i];
 
-                unitMover.targetPosition = new Vector3(10, 0, 12);
+                moveOverride.targetPosition = new Vector3(10, 0, 12);
 
-                unitMoverArray[i] = unitMover;
+                moveOverrideArray[i] = moveOverride;
+
+                entityManager.SetComponentEnabled<MoveOverride>(entityArray[i], true);
             }
 
-            entityQuery.CopyFromComponentDataArray(unitMoverArray);
+            entityQuery.CopyFromComponentDataArray(moveOverrideArray);
 
         }
     }
