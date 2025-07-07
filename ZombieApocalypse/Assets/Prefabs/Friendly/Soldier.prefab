@@ -95,6 +95,10 @@ PrefabInstance:
       propertyPath: targetFaction
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8757568186884687016, guid: 83d86cdc3f246914194c11c3270ed70d, type: 3}
+      propertyPath: findDistanceRange
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

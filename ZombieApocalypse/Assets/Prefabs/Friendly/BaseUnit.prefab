@@ -215,6 +215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerMax: 0.2
+  findDistanceRange: 10
   targetFaction: 0
 --- !u!54 &5962284975309912666
 Rigidbody:

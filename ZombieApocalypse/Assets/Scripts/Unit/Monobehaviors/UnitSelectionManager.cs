@@ -99,11 +99,14 @@ public class UnitSelectionManager : MonoBehaviour
             NativeArray<Entity> entityArray = entityQuery.ToEntityArray(Allocator.Temp);
             NativeArray<MoveOverride> moveOverrideArray = entityQuery.ToComponentDataArray<MoveOverride>(Allocator.Temp);
 
+
+            Vector3 mousePosition = MouseManager.Instance.GetMousePosition();
+
             for(int i=0;i<entityArray.Length;i++)
             {
                 MoveOverride moveOverride = moveOverrideArray[i];
 
-                moveOverride.targetPosition = new Vector3(10, 0, 12);
+                moveOverride.targetPosition = mousePosition;
 
                 moveOverrideArray[i] = moveOverride;
 
