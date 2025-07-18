@@ -13,7 +13,7 @@ public class ShootVictimAuthoring : MonoBehaviour
 
             AddComponent(entity, new ShootVictim
             {
-                hitLocation = authoring.hitTransform.position,
+                hitLocation = authoring.hitTransform.localPosition,
             });
         }
     }

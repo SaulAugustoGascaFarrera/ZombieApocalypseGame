@@ -109,6 +109,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6507070085927798922, guid: 83d86cdc3f246914194c11c3270ed70d, type: 3}
       insertIndex: 4
       addedObject: {fileID: 5618074767418809203}
+    - targetCorrespondingSourceObject: {fileID: 6507070085927798922, guid: 83d86cdc3f246914194c11c3270ed70d, type: 3}
+      insertIndex: 9
+      addedObject: {fileID: 1350728501106795097}
   m_SourcePrefab: {fileID: 100100000, guid: 83d86cdc3f246914194c11c3270ed70d, type: 3}
 --- !u!1 &4234312285786282156 stripped
 GameObject:
@@ -127,6 +130,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2dd2e76a7f28214c893e70353db70d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1350728501106795097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4234312285786282156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1f221f91b5913a4ea622ed95e542701, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerMax: 0.15
+  shootSpawnPointTransform: {fileID: 6194065715914530969}
+  shootAttackDistance: 12
 --- !u!4 &4773922241813322642 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2508203377671769012, guid: 83d86cdc3f246914194c11c3270ed70d, type: 3}

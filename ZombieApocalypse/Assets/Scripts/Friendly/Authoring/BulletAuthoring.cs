@@ -26,6 +26,5 @@ public struct Bullet : IComponentData
     public float movementSpeed;
     public int damageAmount;
 
-    public Entity targetEntity;
 
 }
