@@ -43,6 +43,10 @@ PrefabInstance:
       propertyPath: factionType
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 854972181757733194, guid: 83d86cdc3f246914194c11c3270ed70d, type: 3}
+      propertyPath: loseTargetDistance
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 2508203377671769012, guid: 83d86cdc3f246914194c11c3270ed70d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -118,6 +122,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6507070085927798922, guid: 83d86cdc3f246914194c11c3270ed70d, type: 3}
       insertIndex: 7
       addedObject: {fileID: 8077960784250451789}
+    - targetCorrespondingSourceObject: {fileID: 6507070085927798922, guid: 83d86cdc3f246914194c11c3270ed70d, type: 3}
+      insertIndex: 11
+      addedObject: {fileID: 7787063715277453733}
   m_SourcePrefab: {fileID: 100100000, guid: 83d86cdc3f246914194c11c3270ed70d, type: 3}
 --- !u!4 &4458336483513056305 stripped
 Transform:
@@ -142,3 +149,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitTransform: {fileID: 3070452139873558720}
+--- !u!114 &7787063715277453733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4997901588052197135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0a6745ed080ffc4198c7cbbfc4b8017, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerMax: 0.5
+  damageAmount: 5
+  colliderSize: 10

@@ -13,7 +13,7 @@ partial struct TestDeathSystem : ISystem
     {
         EntityCommandBuffer entityCommandBuffer = SystemAPI.GetSingleton<EndSimulationEntityCommandBufferSystem.Singleton>().CreateCommandBuffer(state.WorldUnmanaged);
 
-        foreach((RefRW<LocalTransform> localTransform,RefRW<Health> health,Entity entity) in SystemAPI.Query<RefRW<LocalTransform>,RefRW<Health>>().WithEntityAccess())
+        foreach((RefRW<Health> health,Entity entity) in SystemAPI.Query<RefRW<Health>>().WithEntityAccess())
         {
             if(health.ValueRO.healthAmount <= 0)
             {

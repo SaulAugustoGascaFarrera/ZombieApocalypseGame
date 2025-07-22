@@ -24,7 +24,7 @@ partial struct FindTargetSystem : ISystem
 
         NativeList<DistanceHit> distanceHitList = new NativeList<DistanceHit>(Allocator.Temp);
 
-        foreach ((RefRW<LocalTransform> localTransform,RefRW<FindTarget> findTarget,RefRW<Target> target) in SystemAPI.Query<RefRW<LocalTransform>,RefRW<FindTarget>,RefRW<Target>>())
+        foreach ((RefRW<LocalTransform> localTransform,RefRW<FindTarget> findTarget,RefRW<Target> target,RefRW<TargetOverride> targetOverride) in SystemAPI.Query<RefRW<LocalTransform>,RefRW<FindTarget>,RefRW<Target>,RefRW<TargetOverride>>())
         {
 
             findTarget.ValueRW.timer -= SystemAPI.Time.DeltaTime;
@@ -35,12 +35,22 @@ partial struct FindTargetSystem : ISystem
             }
             findTarget.ValueRW.timer = findTarget.ValueRO.timerMax;
 
+
+            if(SystemAPI.Exists(targetOverride.ValueRO.targetEntity))
+            {
+                target.ValueRW.targetEntity = targetOverride.ValueRO.targetEntity;
+                continue;
+            }
+
+
+
+
             distanceHitList.Clear();
 
             CollisionFilter collisionFilter = new CollisionFilter
             {
                 BelongsTo = ~0u,
-                CollidesWith = 1u << GameAssets.UNIT_LAYER,
+                CollidesWith = 1u << GameAssets.UNIT_LAYER | 1u << GameAssets.BUILDING_LAYER,
                 GroupIndex = 0
             };
 
